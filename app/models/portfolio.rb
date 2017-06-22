@@ -6,4 +6,11 @@ class Portfolio < ApplicationRecord
   end
   
   scope :ruby_on_rails_portfolio_items, -> { where(subtitle: 'Ruby on Rails') }
+  
+  after_initalize :set_defualts
+  
+  def set_defualts
+    self.main_image ||= "http://placehold.it/600x400"
+    self.thumb_image ||= "http://placehold.it/350x200"
+  end
 end
