@@ -1,8 +1,5 @@
 class Portfolio < ApplicationRecord
-<<<<<<< HEAD
-  validates_presence_of :title, :body, :main_image, :thumb_image
-end
-=======
+
   has_many :technologies
   accepts_nested_attributes_for :technologies,
                                 reject_if: lambda { |attrs| attrs['name'].blank? }
@@ -22,4 +19,3 @@ end
     self.thumb_image ||= Placeholder.image_generator(height: '350', width: '200')
   end
 end
->>>>>>> 34c8c9782042c69b6356250a38b53b1864e926a6
