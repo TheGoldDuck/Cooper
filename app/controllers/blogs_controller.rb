@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
+  layout "blog"
 
   # GET /blogs
   # GET /blogs.json
@@ -12,6 +13,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @page_title = @blog.title
+    @seo_keywords = @blog.body
   end
 
   # GET /blogs/new
@@ -30,7 +32,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to @blog, notice: 'Your post is now live.' }
       else
         format.html { render :new }
       end
@@ -54,17 +56,18 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: 'Post was removed.' }
+      format.json { head :no_content }
     end
   end
-  
+
   def toggle_status
-    
     if @blog.draft?
-      @blog.published! 
+      @blog.published!
     elsif @blog.published?
       @blog.draft!
     end
+        
     redirect_to blogs_url, notice: 'Post status has been updated.'
   end
 
