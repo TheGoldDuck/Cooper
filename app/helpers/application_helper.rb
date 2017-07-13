@@ -18,6 +18,6 @@ module ApplicationHelper
   end
   
   def copyright_generator
-    @copyright = ArmadilloViewTool::Renderer.copyright 'Rachel Parker', 'All rights reserved'
+    @copyright = ArmadilloViewTool::Renderer.copyright 'Cooper Madsen', 'All rights reserved'
   end
 end
