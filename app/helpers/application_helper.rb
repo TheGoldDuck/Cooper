@@ -21,3 +21,4 @@ module ApplicationHelper
     @copyright = ArmadilloViewTool::Renderer.copyright 'Cooper Madsen', 'All rights reserved'
   end
 end
+# Hi
